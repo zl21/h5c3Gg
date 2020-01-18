@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制文字</title>
+    <style>
+        #myCanvas{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="800" height="500"></canvas>
+<script>
+    const oMyCanvas = document.getElementById("myCanvas");
+    const CTX = oMyCanvas.getContext("2d");
+
+    CTX.beginPath();
+
+    CTX.fillStyle = "red";
+    CTX.strokeStyle = "red";
+    // font是设置画笔的文字样式
+    CTX.font = "bold 60px SimSun";
+
+    //设置文字的水平对齐方式  以绘制文字时 设置的x坐标为参考点
+    CTX.textAlign = "start";//默认
+    CTX.textAlign = "end";//向右对齐
+    CTX.textAlign = "center";//居中
+
+    //设置文字的垂直对齐方式
+    CTX.textBaseline = 'top';
+    // CTX.textBaseline = 'hanging';//悬挂,上面有些许压线
+    // CTX.textBaseline = 'middle';
+    // CTX.textBaseline = 'bottom';//底部齐平
+    CTX.textBaseline = 'alphabetic';//底部有些许压线
+
+    // fillText()填充字体，第一个参数是文字，后边的两个参数默认是基线的中心坐标点（一行文字的中心点总在这个点上，以此基点向两边散开）
+    // CTX.fillText("终有弱水替沧海",100,100); 
+
+    CTX.strokeText("终有弱水替沧海",300,100);
+
+    //绘制一条辅助线
+    CTX.beginPath();
+    CTX.moveTo(0,100);
+    CTX.lineTo(600,100);
+    CTX.stroke();
+    //再画一条辅助线：基线的坐标圆点
+    CTX.beginPath();
+    CTX.moveTo(300,0);
+    CTX.lineTo(300,200);
+    CTX.stroke();
+
+</script>
+</body>
+</html>
