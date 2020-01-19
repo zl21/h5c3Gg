@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>绘制阴影</title>
+    <style>
+        #myCanvas {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCan" width="800" height="600"></canvas>
+    <script>
+        const oMyCan = document.getElementById('myCan');
+        const pen = oMyCan.getContext('2d');
+
+        pen.beginPath();
+
+        pen.fillStyle = 'red';
+        pen.fillRect(100, 100, 200, 100);
+
+        //给画笔设置阴影值
+        pen.save();
+        pen.shadowColor = "#500";
+        pen.shadowBlur = 6;//模糊程度
+        pen.shadowOffsetX = 10;//x轴偏移
+        pen.shadowOffsetY = 10;//y轴偏移
+        pen.fillStyle = 'red';
+        pen.fillRect(400, 300, 200, 100);
+        pen.restore();
+
+        pen.beginPath();
+        pen.font = 'bold 32px 微软雅黑';
+        pen.fillText('Keep an open mind and you will learn.',100,500);
+
+    </script>
+</body>
+
+</html>
