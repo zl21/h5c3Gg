@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>刮刮乐</title>
+    <style>
+        #myCanvas {
+            background: url("P_013.jpg") 0 0 no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="500"></canvas>
+    <script>
+        const oMyCanvas = document.getElementById("myCanvas");
+        const pen = oMyCanvas.getContext("2d");
+        //绘制一个destination图，目标图，旧图
+        pen.beginPath();
+        pen.fillStyle = '#CCC';
+        pen.fillRect(0, 0, oMyCanvas.width, oMyCanvas.height);
+
+        //设置新图(source图、后图)和旧图(destinatination目标图、先图)的组合方式
+        pen.globalCompositeOperation = "destination-out";//在源图像外显示目标图，除源图外的部分目标图被显示
+        // pen.globalCompositeOperation = "destination-over";//目标图在上over
+        // pen.globalCompositeOperation = "xor";//透明显示
+
+        /* 
+            onmousedown方法：按下时绘制一个source图，设置globalCompositeOperation(图形组合方式)从而显示出背景图。
+            以达到刮刮乐的效果。
+         */
+        oMyCanvas.onmousedown = function (e) {
+            pen.beginPath();
+            // pen.fillRect(e.offsetX - 15,e.offsetY - 15,30,30);
+            //e.offsetX,e.offsetY相对于事件元素左上角
+            pen.rect(e.offsetX - 15, e.offsetY - 15, 30, 30);
+            pen.fillStyle = "red";
+            pen.fill();
+            oMyCanvas.onmousemove = function (e) {
+                pen.beginPath();
+                // pen.fillRect(e.offsetX - 15,e.offsetY - 15,30,30);
+                pen.rect(e.offsetX - 15, e.offsetY - 15, 30, 30);
+                pen.fillStyle = "red";
+                pen.fill();
+            }
+            //鼠标抬起后，回收画布上的事件
+            oMyCanvas.onmouseup = function () {
+                oMyCanvas.onmouseup = oMyCanvas.onmousemove = null;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
