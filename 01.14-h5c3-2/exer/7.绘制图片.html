@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>绘制图片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="500"></canvas>
+    <script>
+        const oMyCanvas = document.getElementById("myCanvas");
+        const CTX = oMyCanvas.getContext("2d");
+
+        oMyCanvas.width = document.documentElement.clientWidth;
+        oMyCanvas.height = document.documentElement.clientHeight;
+        //保存图片的名称
+        let q = 0;
+        //保存鸟的坐标位置
+        let speed = -132;
+
+        //绘制图片需要一个img的节点 所以需要创建一个img节点
+        const oImg = new Image();
+
+        CTX.beginPath();
+
+        setInterval(function () {
+            CTX.clearRect(0, 0, oMyCanvas.width, oMyCanvas.height)
+
+            q++;
+            if (q > 8) {
+                q = 1;
+            }
+
+            speed += 5;
+            if (speed >= oMyCanvas.width) {
+                speed = -132;
+            }
+
+            oImg.src = `../images/q_r${q}.jpg`;
+            //必须等待图片加载完成才能绘制
+            oImg.onload = function () {
+                // drawImage方法 常用5个参数  ：img节点 图片的x 图片的y 图片的宽和图片的高
+                CTX.drawImage(oImg, speed, 200, 132, 82);
+            }
+        }, 40)
+
+    </script>
+</body>
+
+</html>
