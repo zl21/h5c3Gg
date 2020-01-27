@@ -19,14 +19,13 @@
 
     //绘制图片需要一个img的节点 所以需要创建一个img节点
     const oImg = new Image();
-    oImg.src = "../images/img21.jpg";
+    oImg.src = "../images/P_001.jpg";
 
     //必须等待图片加载完成才能绘制
     oImg.onload = function () {
-        // drawImage方法 常用5个参数  ：img节点 图片的x 位置   图片的y位置  图片的宽和图片的高
+        // drawImage方法：常用5个参数  ：img节点 图片的x 图片的y 图片的宽和图片的高
         CTX.drawImage(oImg,100,100,200,200);
     }
-
 
 </script>
 </body>

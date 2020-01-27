@@ -18,7 +18,7 @@
     CTX.beginPath();
 
     const oImg = new Image();
-    oImg.src = "../images/img21.jpg";
+    oImg.src = "../images/P_001.jpg";
     oImg.onload = function () {
         CTX.drawImage(oImg,0,0,800,400)
 
@@ -34,7 +34,7 @@
         console.log(imgData);
 
         // imgData又是一个新的像素点，你可以选择放在任意的位置，
-        // 通过putImageData的方法 放置  3个参数，分别是：img数据   放置的x 和y位置
+        // 通过putImageData的方法 放置  3个参数，分别是：img数据 放置的x 和y位置
         CTX.putImageData(imgData,600,250);
     }
 
