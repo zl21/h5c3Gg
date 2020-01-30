@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>音视频</title>
+</head>
+
+<body>
+    <button id="btn1">DOM属性</button>
+    <button id="btn2">方法</button>
+    <button id="btn3">事件</button>
+    <video id="vid1" controls src="http://img.ksbbs.com/asset/Mon_1703/eb048d7839442d0.mp4"></video>
+    <script>
+        const oVid = document.getElementById("vid1");
+        const oBtn1 = document.getElementById("btn1");
+        const oBtn2 = document.getElementById("btn2");
+        const oBtn3 = document.getElementById("btn3");
+        /* 一、音视频的DOM属性： */
+        oBtn1.onclick = function () {
+            //获取当前的播放时间
+            // console.log(oVid.currentTime);
+
+            //设置当前的播放时间
+            // oVid.currentTime = 100;
+
+            //获取总时长
+            // console.log(oVid.duration);
+
+            //设置或者返回是否静音
+            // console.log(oVid.muted);
+            // oVid.muted = true;
+
+            //返回是否被暂停
+            // console.log(oVid.paused);
+
+            //设置或返回播放速度
+            // console.log(oVid.playbackRate);
+            // oVid.playbackRate = 0.6;
+
+            //设置或返回音量
+            // console.log(oVid.volume);
+            // oVid.volume = 0.5;
+
+            //返回是否播放结束
+            console.log(oVid.ended);
+        }
+        /* 二、音视频的方法： */
+        oBtn2.onclick = function () {
+            //控制视频播放
+            // oVid.play();
+
+            //控制视频暂停
+            // oVid.pause();
+
+            //控制视频返回最初
+            // oVid.load();
+        }
+        /* 三、音视频的事件： */
+        oBtn3.onclick = function () {
+            oVid.onplay = function () {
+                console.log("播放啦");
+            }
+            oVid.onpause = function () {
+                console.log("停啦");
+            }
+            oVid.ontimeupdate = function () {
+                console.log("视频一直在播放呢");
+            }
+            oVid.onended = function () {
+                console.log("播放完了 看广告把");
+            }
+            oVid.onvolumechange = function () {
+                console.log("声音变化啦");
+            }
+            oVid.onloadedmetadata = function () {
+                console.log("可以看到总时间了");
+            }
+        }
+    </script>
+</body>
+
+</html>
